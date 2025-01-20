@@ -75,10 +75,11 @@ hr {
 
 /* base layout styles */
 #content {
-    justify-self: center;
     width: 60%;
     height: 100%;
     margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #31491d;
     border: 5rem solid #31491d;
 }
@@ -121,6 +122,15 @@ hr {
 .socials-list {
     display: flex;
     flex-direction: column;
+}
+
+.socials-icon {
+    width: 25px;
+    margin-right: 0.75rem;
+}
+
+.page-title {
+    flex: 1;
 }
 
 /* home styles */
@@ -228,7 +238,7 @@ textarea {
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1150px) {
     body {
         background-image: none;
         background-color: #31491d;
