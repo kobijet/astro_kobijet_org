@@ -1,0 +1,20 @@
+---
+const { link, title, date, tags } = Astro.props;
+
+const prettyTags = () => {
+    let tagsList = ["["];
+    for (let i = 0; i < tags.length; i++) {
+        tagsList.push(tags[i]);
+        if (i != tags.length - 1)
+        {
+            tagsList.push(",")
+        }
+    }
+    tagsList.push("]")
+    return tagsList;
+}
+---
+
+<li class="project-link">
+    <p>{date} - <a href={link}>{title}</a> {prettyTags}</p>
+</li>

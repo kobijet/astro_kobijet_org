@@ -1,0 +1,22 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+<BaseLayout pageTitle={frontmatter.title}>
+    <div id="project">
+        <p>Written by {frontmatter.author} on {frontmatter.pubDate.toString().slice(0, 10)}</p>
+        <a href="/projects/">Back</a>
+        <hr />
+
+        <a class="img-link" href={frontmatter.img.link}><img src={frontmatter.img.url} alt={frontmatter.img.alt} /></a>
+        <h3>Overview</h3>
+        <p>{frontmatter.shortDesc}</p>
+        <p>Project created {frontmatter.longDate}</p>
+        <h4>Platforms: </h4>
+        <ul> {frontmatter.platforms.map((platform: any) => <li>{platform}</li>)} </ul>
+        <hr />
+
+        <slot />
+    </div>
+</BaseLayout>

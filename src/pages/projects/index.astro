@@ -1,0 +1,50 @@
+---
+import ProjectLink from "../../components/ProjectLink.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const allProjects = Object.values(import.meta.glob('./*.md', { eager: true }));
+const tags = [ ...new Set(allProjects.map((post: any) => post.frontmatter.tags).flat())];
+const gamesProjects = allProjects.filter((post: any) => post.frontmatter.tags?.includes("games"));
+const webProjects = allProjects.filter((post: any) => post.frontmatter.tags?.includes("web"));
+---
+
+<BaseLayout pageTitle="projects">
+    <div id="projects">
+        <p>This page contains all my published projects.</p>
+        <p>I do a little bit of everything, but mostly make games.</p>
+
+        {allProjects.length != 0 ? <h3>Pages</h3> : <p>No projects yet!</p>}
+        {allProjects.map((project: any) =>
+            <ul>
+            <ProjectLink 
+                link={project.url} 
+                title={project.frontmatter.title} 
+                date={project.frontmatter.pubDate}
+                tags={project.frontmatter.tags}/>
+            </ul>
+        )}
+
+        <!--
+        {gamesProjects.length != 0 ? <h3>Games</h3> : null}
+        {gamesProjects.map((project: any) =>
+            <ul>
+            <ProjectLink 
+                link={project.url} 
+                title={project.frontmatter.title} 
+                shortDesc={project.frontmatter.shortDesc}
+                tags={project.frontmatter.tags}/>
+            </ul>
+        )}
+        
+        {webProjects.length != 0 ? <h3>Web</h3> : null}
+        {webProjects.map((project: any) =>
+            <ul>
+            <ProjectLink 
+                link={project.url} 
+                title={project.frontmatter.title} 
+                shortDesc={project.frontmatter.shortDesc}
+                tags={project.frontmatter.tags}/>
+            </ul>
+        )} -->
+    </div>
+</BaseLayout>

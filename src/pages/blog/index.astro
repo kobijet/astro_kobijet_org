@@ -1,0 +1,60 @@
+---
+import ProjectLink from "../../components/ProjectLink.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const allPosts = Object.values(import.meta.glob('./*.md', { eager: true }));
+const tags = [ ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
+const webPosts = allPosts.filter((post: any) => post.frontmatter.tags?.includes("web"));
+const gamesPosts = allPosts.filter((post: any) => post.frontmatter.tags?.includes("games"));
+const lifePosts = allPosts.filter((post: any) => post.frontmatter.tags?.includes("life"));
+---
+
+<BaseLayout pageTitle="blog">
+    <div id="blog">
+        <h3>You've found it!</h3>
+        <p><b>THIS</b> is the secret to unlocking my brain.</p>
+        <p>Here you'll find a collection of my thoughts on things, project updates, and more!</p>
+
+        {allPosts.length != 0 ? <h3>Posts</h3> : <p>No posts yet!</p>}
+        {allPosts.map((project: any) =>
+            <ul>
+            <ProjectLink 
+                link={project.url} 
+                title={project.frontmatter.title} 
+                date={project.frontmatter.pubDate}
+                tags={project.frontmatter.tags}/>
+            </ul>
+        )}
+
+<!--    {gamesPosts.length != 0 ? <h3>Games</h3> : null}
+        {gamesPosts.map((project: any) =>
+            <ul>
+            <ProjectLink 
+                link={project.url} 
+                title={project.frontmatter.title} 
+                shortDesc={project.frontmatter.desc}/>
+            </ul>
+        )}
+
+        {webPosts.length != 0 ? <h3>Web</h3> : null}
+        {webPosts.map((project: any) =>
+            <ul>
+            <ProjectLink 
+                link={project.url} 
+                title={project.frontmatter.title} 
+                shortDesc={project.frontmatter.desc}/>
+            </ul>
+        )}
+
+        
+        {lifePosts.length != 0 ? <h3>Life</h3> : null}
+        {lifePosts.map((project: any) =>
+            <ul>
+            <ProjectLink 
+                link={project.url} 
+                title={project.frontmatter.title} 
+                shortDesc={project.frontmatter.desc}/>
+            </ul>
+        )} -->
+    </div>
+</BaseLayout>

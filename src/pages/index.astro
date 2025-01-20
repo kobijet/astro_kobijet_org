@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout pageTitle="home">
+	<div id="home-intro">
+		<img src="/pfp.jpg" alt="A person with curly blonde hair on a background of green and yellowing leaves.">
+		<div>
+			<h3>Hey there!</h3>
+			<p>My name is Kobi. Welcome to my portfolio and blog!</p>
+			<p>I am a game designer, a tech-enthusiast, a music maker, and most importantly... awesome.</p>
+			<p>Before you is a library of my ramblings and musings as well as projects I'm working on and other things I'm doing.</p>
+		</div>
+	</div>
+	<div class="socials">
+		<div>
+			<h3>Socials</h3>
+			<p>Find me on:</p>
+		</div>
+		<div>
+			<ul class="socials-list">
+				<li><a href="https://kobijet.itch.io">itch.io</a></li>
+				<li><a href="https://bsky.app/profile/kobijet.bsky.social">Bluesky</a></li>
+				<li><a href="https://www.linkedin.com/in/kobi-rogers/">LinkedIn</a></li>
+			</ul>
+		</div>
+	</div>
+</BaseLayout>
